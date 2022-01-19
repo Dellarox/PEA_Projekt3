@@ -127,7 +127,7 @@ void Algorithm::geneticAlgorithm(vector<vector<int>> weightMatrix, float timeAlg
 			if (drawForCrossover < crossoverRate) { // i sprawdzamy czy wykonamy krzyzowanie
 				child1 = cycleCrossover(femaleParent, maleParent);
 				child2 = cycleCrossover(femaleParent, maleParent);
-			} // jezeli krzyzwowanie wykonamy to tworza sie nowe cechy "dzieci", jezeli nie to "stare dzieci" zostaja
+			}
 
 			double drawForMutationForFirstChild = crossoverMutationDraw(0, 1); // losujemy liczbê
 
