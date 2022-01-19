@@ -87,20 +87,24 @@ void Algorithm::geneticAlgorithm(vector<vector<int>> weightMatrix, float timeAlg
 	srand(unsigned(time(NULL)));
 
 	vector<solution> populations; // wektor przechowuj¹cy wszystkie rozwi¹zania (chromosomy)
+	solution theBest;
+	theBest.result = INT_MAX;
 
-	for (int i = 0; i < sizeOfStartingPopulation; i++) { // pêtla odpowiadaj¹ca za wpisanie wszystkich miast do wektora wszystkich rozwi¹zañ i ich przelosowanie w tym wektorze
+	for (int i = 0; i < sizeOfStartingPopulation; i++) { // pêtla, ktora losuje poczatkowa populacje
 		solution population; // wektor pomocniczy przechowuj¹cy jedno rozwi¹zanie
 		for (int j = 0; j < weightMatrix.size(); j++)
 			population.path.push_back(j);
 
+		random_shuffle(population.path.begin(), population.path.end());
+		population.result = pathLenght(weightMatrix, population.path);
 		populations.push_back(population);
-		random_shuffle(populations[i].path.begin(), populations[i].path.end());
+
+		if (comparator(population, theBest)) { // dodatkowo sprawdzam czy aktualne rozwiazanie jest najlepsze, jesli tak to je zapisuje
+			theBest = population;
+		}
 	}
 
 	while (((float)elapsed / frequency) < timeAlg) { // pêtla trwaj¹ca dopóki nie minie czas, który zosta³ podany do wykonania algorytmu
-
-		for (int i = 0; i < populations.size(); i++) // pêtla obliczaj¹ca tzw. "fitness", czyli "wartoœæ" chromosomu, w naszym przypadku jest to d³ugoœæ ka¿dej œcie¿ki
-			populations[i].result = pathLenght(weightMatrix, populations[i].path);
 
 		vector<solution> newPopulations;
 
@@ -135,7 +139,6 @@ void Algorithm::geneticAlgorithm(vector<vector<int>> weightMatrix, float timeAlg
 				}
 				else
 					inversionMutation(child1);
-				newPopulations.push_back(child1);
 			}
 
 			double drawForMutationForSecondChild = crossoverMutationDraw(0, 1);
@@ -148,16 +151,24 @@ void Algorithm::geneticAlgorithm(vector<vector<int>> weightMatrix, float timeAlg
 				}
 				else
 					swapMutation(child2);
-				newPopulations.push_back(child2);
 			}
+
+			child1.result = pathLenght(weightMatrix, child1.path);
+			child2.result = pathLenght(weightMatrix, child2.path);
+
+			newPopulations.push_back(child1);
+			newPopulations.push_back(child2);
+
+			if (comparator(child1, theBest)) // porownuje nowych potomkow z najlepszym (minimum globalne) i jezeli sa lepsi to ich podmieniam
+				theBest = child1;
+
+			if (comparator(child2, theBest))
+				theBest = child2;
 
 			populations = newPopulations; // przypisanie nowej populacji jako aktualnej
 
 			elapsed = read_QPCForAlgorithm() - start;
 		}
-
-		for (int i = 0; i < populations.size(); i++) // liczymy droge dla kazdego rozwiazania
-			populations[i].result = pathLenght(weightMatrix, populations[i].path);	
 	}
 	
 	sort(populations.begin(), populations.end(), comparator); // sortuje rozwiazania 

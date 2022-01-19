@@ -66,7 +66,7 @@ int main()
     bool endProgram = false;
     Algorithm a;
     float time = 20;
-    int sizeOfStartingPopulation = 35, mutationMethod = 1;
+    int sizeOfStartingPopulation = 40, mutationMethod = 1;
     float mutationRate = 0.01, crossoverRate = 0.8;
 
     cout << "Projekt PEA    Kajetan Krason    252767" << endl << endl;
