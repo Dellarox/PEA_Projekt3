@@ -12,6 +12,6 @@ using namespace std;
 class TimeTests {
 public:
 
-	void timeTestsForGA(Algorithm a, string fileName, int numberOfCities, vector<vector<int>> weightMatrix);
+	void timeTestsForGA(Algorithm a, string fileName, int numberOfCities, vector<vector<int>> weightMatrix, int sizeOfStartingPopulation, int mutationMethod);
 };
 

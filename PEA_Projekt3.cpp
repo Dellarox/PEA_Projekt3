@@ -47,6 +47,35 @@ void doGA(float time, int sizeOfStartingPopulation, float mutationRate, float cr
 }
 
 void tests() { // funkcja, w ktorej odpalane sa wszystkie testy
+    tt.timeTestsForGA(att, "43.txt", 43, weightMatrixGlobal, 20, 1);
+    tt.timeTestsForGA(att, "43.txt", 43, weightMatrixGlobal, 40, 1);
+    tt.timeTestsForGA(att, "43.txt", 43, weightMatrixGlobal, 80, 1);
+    tt.timeTestsForGA(att, "43.txt", 43, weightMatrixGlobal, 20, 2);
+    tt.timeTestsForGA(att, "43.txt", 43, weightMatrixGlobal, 40, 2);
+    tt.timeTestsForGA(att, "43.txt", 43, weightMatrixGlobal, 80, 2);
+    tt.timeTestsForGA(att, "43.txt", 43, weightMatrixGlobal, 20, 3);
+    tt.timeTestsForGA(att, "43.txt", 43, weightMatrixGlobal, 40, 3);
+    tt.timeTestsForGA(att, "43.txt", 43, weightMatrixGlobal, 80, 3);
+
+    tt.timeTestsForGA(att, "171.txt", 171, weightMatrixGlobal, 20, 1);
+    tt.timeTestsForGA(att, "171.txt", 171, weightMatrixGlobal, 40, 1);
+    tt.timeTestsForGA(att, "171.txt", 171, weightMatrixGlobal, 80, 1);
+    tt.timeTestsForGA(att, "171.txt", 171, weightMatrixGlobal, 20, 2);
+    tt.timeTestsForGA(att, "171.txt", 171, weightMatrixGlobal, 40, 2);
+    tt.timeTestsForGA(att, "171.txt", 171, weightMatrixGlobal, 80, 2);
+    tt.timeTestsForGA(att, "171.txt", 171, weightMatrixGlobal, 20, 3);
+    tt.timeTestsForGA(att, "171.txt", 171, weightMatrixGlobal, 40, 3);
+    tt.timeTestsForGA(att, "171.txt", 171, weightMatrixGlobal, 80, 3);
+
+    tt.timeTestsForGA(att, "358.txt", 358, weightMatrixGlobal, 20, 1);
+    tt.timeTestsForGA(att, "358.txt", 358, weightMatrixGlobal, 40, 1);
+    tt.timeTestsForGA(att, "358.txt", 358, weightMatrixGlobal, 80, 1);
+    tt.timeTestsForGA(att, "358.txt", 358, weightMatrixGlobal, 20, 2);
+    tt.timeTestsForGA(att, "358.txt", 358, weightMatrixGlobal, 40, 2);
+    tt.timeTestsForGA(att, "358.txt", 358, weightMatrixGlobal, 80, 2);
+    tt.timeTestsForGA(att, "358.txt", 358, weightMatrixGlobal, 20, 3);
+    tt.timeTestsForGA(att, "358.txt", 358, weightMatrixGlobal, 40, 3);
+    tt.timeTestsForGA(att, "358.txt", 358, weightMatrixGlobal, 80, 3);
 
     cout << "KONIEC TESTOW" << endl;
 }

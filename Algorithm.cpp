@@ -111,7 +111,7 @@ void Algorithm::geneticAlgorithm(vector<vector<int>> weightMatrix, float timeAlg
 		sort(populations.begin(), populations.end(), comparator); // sortuje w celu wykonania "elitaryzmu"
 		for (int i = 0; i < populations.size() / 10; i++) // tutaj zastosowany jest tzw. elitaryzm, czyli czesc najlepszych osobnikow z poprzedniej populacji jest zostawiana do nowej populacji
 			newPopulations.push_back(populations[i]);
-		
+
 
 		while(newPopulations.size() < sizeOfStartingPopulation){ // pêtla wyznaczaj¹ca nowe populacje
 			// wykorzystana zostanie metoda turniejowa w celu wyznaczenia "rodzicow"
@@ -173,11 +173,11 @@ void Algorithm::geneticAlgorithm(vector<vector<int>> weightMatrix, float timeAlg
 	
 	sort(populations.begin(), populations.end(), comparator); // sortuje rozwiazania 
 
-	cout << "Najlepsza droga: " << endl; // wypisanie wyników
-	for (int j = 0; j < populations[0].path.size() -1; j++) {
-		cout << populations[0].path[j] << "->";
-	}
-	cout << populations[0].path[0] << endl;
+	//cout << "Najlepsza droga: " << endl; // wypisanie wyników
+	//for (int j = 0; j < populations[0].path.size() -1; j++) {
+	//	cout << populations[0].path[j] << "->";
+	//}
+	//cout << populations[0].path[0] << endl;
 
 	cout << "Wynik znalezionej drogi: " << endl << populations[0].result << endl;
 	

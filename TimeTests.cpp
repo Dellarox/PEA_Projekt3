@@ -6,27 +6,19 @@ long long int read_QPCForTimeTests() {
 	return((long long int)count.QuadPart);
 }
 
-void TimeTests::timeTestsForGA(Algorithm a, string fileName, int numberOfCities, vector<vector<int>> weightMatrix) {
-	/*srand(time(NULL));
+void TimeTests::timeTestsForGA(Algorithm a, string fileName, int numberOfCities, vector<vector<int>> weightMatrix, int sizeOfStartingPopulation, int mutationMethod) {
+	srand(time(NULL));
 	long long int frequency, start, elapsed;
 	QueryPerformanceFrequency((LARGE_INTEGER*)&frequency);
 
 	double timeOfTest, finalResult = 0, finalTime = 0;
-	int result;
-	vector<int> path;
 
 	bool checker = a.fileReadGraph(fileName, true, numberOfCities, weightMatrix);
 
 	start = read_QPCForTimeTests();
-	for (int i = 0; i < 30; i++) {
-		timeOfTest = 0;
-		a.geneticAlgorithm(weightMatrix, result, path, 60);
-		elapsed = read_QPCForTimeTests() - start;
-		finalResult += result;
-		finalTime += elapsed;
-	}
 
-	finalTime = (1.0 * elapsed) / frequency;
-	cout << "Usredniony czas testów dla " << numberOfCities << " miast w [s]: " << finalTime / 30 << "." << endl;
-	cout << "Usredniona droga dla " << numberOfCities << " miast: " << finalResult / 30 << "." << endl;*/
+	cout << "wielkoœæ: " << numberOfCities << ", czas: 100, populacja: " << sizeOfStartingPopulation << ", mutacja(1 - inv, 2 - swap, 3 - mieszana) : " << mutationMethod << ", wynik : (wypisany ponizej)." << endl;
+
+	for (int i = 0; i < 4; i++) 
+		a.geneticAlgorithm(weightMatrix, 100, sizeOfStartingPopulation, 0.01, 0.8, mutationMethod);
 }
